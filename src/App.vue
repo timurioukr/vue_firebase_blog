@@ -3,17 +3,20 @@
     <div class="app">
       <Navigation />
       <router-view />
+      <Footer />
     </div>
   </div>
 </template>
 
 <script>
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 
 export default {
   name: "app",
   components: {
-    Navigation
+    Navigation,
+    Footer
   },
   data() {
     return {};
@@ -54,6 +57,45 @@ export default {
 }
 
 .link-light {
-  color: #fff;
+  color: rgb(255, 255, 255);
+}
+
+.arrow {
+  margin-left: 8px;
+  width: 12px;
+  path {
+    fill: #000;
+  }
+}
+
+.arrow-light {
+  path {
+    fill: rgb(255, 255, 255);
+  }
+}
+
+.blog-card-wrap {
+  position: relative;
+  padding: 80px 16px;
+  background-color: aliceblue;
+  @media (min-width: 500px) {
+    padding: 100px 16px;
+  }
+
+  .blog-cards {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 500px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 900px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 }
 </style>
