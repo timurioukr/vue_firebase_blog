@@ -2,7 +2,7 @@
   <div class="blog-card">
     <div class="icons">
       <div class="icon">
-        <Edit class="icon" />
+        <Edit class="edit" />
       </div>
       <div class="icon">
         <Delete class="delete" />
@@ -53,7 +53,7 @@ export default {
   }
 
   .icons {
-    display: block;
+    display: flex;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -61,21 +61,21 @@ export default {
 
     .icon {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       width: 35px;
       height: 35px;
       border-radius: 50%;
-      background-color: aliceblue;
+      background-color: rgb(255, 255, 255);
       transition: 0.5s ease all;
 
       &:hover {
-        background-color: rgb(6, 49, 51);
+        background-color: rgb(186, 190, 250);
 
         .edit,
         .delete {
           path {
-            fill: aliceblue;
+            fill: rgb(255, 255, 255);
           }
         }
       }
