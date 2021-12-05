@@ -1,9 +1,9 @@
 <template>
   <div class="app-wrapper">
     <div class="app">
-      <Navigation />
+      <Navigation v-if="!navigation" />
       <router-view />
-      <Footer />
+      <Footer v-if="!navigation"/>
     </div>
   </div>
 </template>
@@ -11,20 +11,44 @@
 <script>
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 export default {
   name: "app",
   components: {
     Navigation,
-    Footer
+    Footer,
   },
   data() {
-    return {};
+    return {
+      navigation: null,
+    };
   },
-  created() {},
+  created() {
+    this.checkRoute()
+    console.log(firebase.auth().currentUser);
+
+  },
   mounted() {},
-  methods: {},
-  watch: {},
+  methods: {
+    checkRoute() {
+      if (
+        this.$route.name === "Login" ||
+        this.$route.name === "Register" ||
+        this.$route.name === "ForgotPassword"
+      ) {
+        this.navigation = true;
+        return;
+      }
+      this.navigation = false;
+    },
+  },
+  watch: {
+    $route() {
+      this.checkRoute()
+    }
+  },
 };
 </script>
 
@@ -93,7 +117,7 @@ button,
   &:hover {
     background-color: rgb(71, 71, 71);
   }
-} 
+}
 
 .button-ghost {
   color: rgb(0, 0, 0);
@@ -123,6 +147,12 @@ button,
   pointer-events: none !important;
   cursor: none !important;
   background-color: rgb(95, 95, 95) !important;
+}
+
+.error {
+  text-align: center;
+  font-size: 12px;
+  color: red;
 }
 
 .blog-card-wrap {
