@@ -5,7 +5,7 @@
     <div class="form-wrap">
       <form class="reset">
         <p class="login-register">
-          Already have an account?
+          Back to
           <router-link class="router-link" :to="{ name: 'Login' }"
             >Login</router-link
           >
