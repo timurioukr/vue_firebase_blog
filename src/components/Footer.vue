@@ -37,6 +37,11 @@ export default {
   name: 'footer-vue',
   components: {
     ...SocialIcons,
+  },
+  computed: {
+    user() {
+      return this.$store.state.user
+    }
   }
 }
 </script>
