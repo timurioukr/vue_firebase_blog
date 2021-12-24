@@ -67,6 +67,14 @@ const routes = [
       title: 'Admin',
     },
   },
+  // {
+  //   path: '/create-post',
+  //   name: 'CreatePost',
+  //   component: CreatePost,
+  //   meta: {
+  //     title: 'Create Post',
+  //   },
+  // },
 ]
 
 const router = new VueRouter({

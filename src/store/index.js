@@ -22,6 +22,7 @@ export default new Vuex.Store({
     profileUsername: null,
     profileId: null,
     profileInitials: null,
+    profileIsAdmin: null
   },
   mutations: {
     toggleEditPost(state, payload) {
@@ -36,6 +37,7 @@ export default new Vuex.Store({
       state.profileFirstName = doc.data().firstName
       state.profileLastName = doc.data().lastName
       state.profileUsername = doc.data().username
+      state.profileIsAdmin = doc.data().isAdmin
     },
     setProfileInititals(state) {
       state.profileInitials =
