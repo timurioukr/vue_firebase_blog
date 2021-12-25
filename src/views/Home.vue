@@ -29,10 +29,10 @@ import Arrow from '../assets/Icons/arrow-right-light.svg'
 export default {
   name: "Home",
   components: {
-    BlogPost, 
+    BlogPost,
     BlogCard,
     Arrow
-    },
+  },
   data () {
     return {
       welcomeScreen: {
