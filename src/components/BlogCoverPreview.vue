@@ -42,7 +42,7 @@ export default {
   height: 100%;
 
   .modal-content {
-
+    align-items: center;
     display: flex;
     justify-content: center;
     position: relative;
@@ -67,7 +67,7 @@ export default {
     img {
       margin-top: 16px;
       display: block;
-      width: auto;
+      max-width: 250px;
       height: 100%;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }

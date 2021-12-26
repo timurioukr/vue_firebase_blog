@@ -14,17 +14,16 @@
               @click="openPreview"
               class="preview"
               :class="{ 'button-inactive': !this.$store.state.blogPhotoFileURL }"
-              @image-added="imageHandler"
           >Preview Photo</button>
           <span>File Chosen: {{ this.$store.state.blogPhotoName }}</span>
         </div>
       </div>
       <div class="editor">
-        <vue-editor :editorOptions="editorSettings" v-model="blogHTML" useCustomImageHandler />
+        <vue-editor :editorOptions="editorSettings" v-model="blogHTML" useCustomImageHandler @image-added="imageHandler" />
       </div>
       <div class="blog-actions">
         <button>Publish Blog</button>
-        <router-link class="router-button" to="#">Post Preview</router-link>
+        <router-link class="router-button" :to="{ name: 'BlogPreview' }">Post Preview</router-link>
       </div>
     </div>
   </div>
@@ -63,7 +62,7 @@ Quill.register('modules/imageResize', ImageResize)
         this.$store.commit('createFileURL', URL.createObjectURL(this.file))
       },
       openPreview() {
-        this.$store.commit('blogPhotoPreview')
+        this.$store.commit('openPhotoPreview')
       },
       imageHandler(file, Editor, cursorLocation, resetUploader) {
         const storageRef = firebase.storage().ref()

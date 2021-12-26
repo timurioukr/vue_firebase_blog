@@ -43,7 +43,7 @@ export default new Vuex.Store({
     createFileURL(state, payload) {
       state.blogPhotoFileURL = payload
     },
-    blogPhotoPreview(state) {
+    openPhotoPreview(state) {
       state.blogPhotoPreview = !state.blogPhotoPreview
     },
     toggleEditPost(state, payload) {
