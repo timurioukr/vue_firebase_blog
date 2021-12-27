@@ -1,6 +1,9 @@
-# fireblogs
-  <img width="2000" align='center' src="https://github.com/timurioukr/vue_firebase_blog/blob/main/1.jpg">
+### Screenshots from admin panel
 
+  <img width="2000" align='center' src="https://github.com/timurioukr/vue_firebase_blog/blob/main/1.jpg">
+  <img width="2000" align='center' src="https://github.com/timurioukr/vue_firebase_blog/blob/main/2.jpg">
+  <img width="2000" align='center' src="https://github.com/timurioukr/vue_firebase_blog/blob/main/3.jpg">
+  <img width="2000" align='center' src="https://github.com/timurioukr/vue_firebase_blog/blob/main/4.jpg">
 
 ## Project setup
 ```
