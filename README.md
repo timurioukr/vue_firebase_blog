@@ -1,5 +1,5 @@
 # fireblogs
-  <img width="250" align='left' src="https://github.com/WaylonWalker/WaylonWalker/blob/main/icon/hacktoberfest.png?raw=true">
+  <img width="250" align='left' src="https://github.com/timurioukr/vue_firebase_blog/blob/main/1.jpg">
 
 
 ## Project setup
