@@ -9,6 +9,10 @@ import Profile from '../views/Profile.vue'
 import Admin from '../views/Admin.vue'
 import CreatePost from '../views/CreatePost'
 import BlogPreview from '../views/BlogPreview'
+import ViewBlog from '../views/ViewBlog'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -19,6 +23,7 @@ const routes = [
     component: Home,
     meta: {
       title: 'Home',
+      requiresAuth: false
     },
   },
   {
@@ -27,6 +32,7 @@ const routes = [
     component: Blog,
     meta: {
       title: 'Blog',
+      requiresAuth: false
     },
   },
   {
@@ -35,6 +41,7 @@ const routes = [
     component: Login,
     meta: {
       title: 'Login',
+      requiresAuth: false
     },
   },
   {
@@ -43,6 +50,7 @@ const routes = [
     component: Register,
     meta: {
       title: 'Register',
+      requiresAuth: false
     },
   },
   {
@@ -51,6 +59,7 @@ const routes = [
     component: ForgotPassword,
     meta: {
       title: 'Forgot Password',
+      requiresAuth: false
     },
   },
   {
@@ -59,6 +68,7 @@ const routes = [
     component: Profile,
     meta: {
       title: 'Profile',
+      requiresAuth: true
     },
   },
   {
@@ -67,6 +77,8 @@ const routes = [
     component: Admin,
     meta: {
       title: 'Admin',
+      requiresAuth: true,
+      requiresAdmin: true
     },
   },
   {
@@ -75,6 +87,8 @@ const routes = [
     component: CreatePost,
     meta: {
       title: 'Create Post',
+      requiresAuth: true,
+      requiresAdmin: true
     },
   },
   {
@@ -83,6 +97,17 @@ const routes = [
     component: BlogPreview,
     meta: {
       title: 'Blog Preview Post',
+      requiresAuth: true,
+      requiresAdmin: true
+    },
+  },
+  {
+    path: '/view-blog/:blogid',
+    name: 'ViewBlog',
+    component: ViewBlog,
+    meta: {
+      title: 'View Blog Post',
+      requiresAuth: false
     },
   },
 ]
@@ -96,6 +121,27 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   document.title = `${to.meta.title} | Fireblog`
   next()
+})
+
+router.beforeEach(async (to, from, next) => {
+  let user = firebase.auth().currentUser
+  let admin = null
+  if (user) {
+    admin = setTimeout(() => {store.state.profileIsAdmin}, 5000);
+  }
+  if(to.matched.some((res) => res.meta.requiresAuth)) {
+    if(user) {
+      if(to.matched.some((res) => res.meta.requiresAdmin)) {
+        if(admin) {
+          return next()
+        }
+        return next({name:'Home'})
+      }
+      return next()
+    }
+    return next({name:'Home'})
+  }
+  return next()
 })
 
 export default router

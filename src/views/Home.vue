@@ -1,20 +1,20 @@
 <template>
   <div class="home">
-    <blog-post v-if="!user" :post='welcomeScreen'/>
-    <blog-post v-for="(post, index) in sampleBlogPost" :key="index" :post='post'/>
+    <blog-post :post='welcomeScreen'/>
+    <blog-post v-for="(post, index) in blogPostsFeed" :key="index" :post='post'/>
     <div class="blog-card-wrap">
       <div class="container">
         <h3>View More Recent Blogs</h3>
         <div class="blog-cards">
-          <blog-card :post='post' v-for='(post, index) in sampleBlogCards' :key='index'/>
+          <blog-card :post='post' v-for='(post, index) in blogPostsCards' :key='index'/>
         </div>
       </div>
     </div>
     <div v-if="!user" class="updates">
       <div class="container">
-        <h2>Never miss a post, Register for you free account</h2>
-        <router-link class="router-button" to="#">
-          Register for FireBlogs <Arrow class="arrow arrow-light" />
+        <h2>Lorem ipsum set amet dolorem</h2>
+        <router-link class="router-button" to='#'>
+          If you want to contact, please send me message<Arrow class="arrow arrow-light" />
         </router-link>
       </div>
     </div>
@@ -37,27 +37,18 @@ export default {
     return {
       welcomeScreen: {
         title: 'Welcome!',
-        blogPost: 'Lorem ipsum set amet dolorem',
+        blogPost: 'This blog was created with Vue and Firebase',
         welcomeScreen: true,
         photo: 'coding'
       },
-      sampleBlogPost: [
-        {
-          title: 'This is a Filler Title!',
-          blogHTML: 'This is a Filler blog post title!',
-          blogCovewrPhoto: 'beautiful-stories'
-        },
-        {
-          title: 'This is a Filler Title2!',
-          blogHTML: 'This is a Filler blog post title!',
-          blogCovewrPhoto: 'designed-for-everyone'
-        }
-      ],
     }
   },
   computed: {
-    sampleBlogCards() {
-      return this.$store.state.sampleBlogCards
+    blogPostsCards() {
+      return this.$store.getters.blogPostsCards
+    },
+    blogPostsFeed() {
+      return this.$store.getters.blogPostsFeed
     },
     user() {
       return this.$store.state.user

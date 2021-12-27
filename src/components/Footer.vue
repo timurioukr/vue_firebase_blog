@@ -19,7 +19,7 @@
           </ul>
         </div>
         <div class="col-2">
-          <router-link class="header" :to="{ name: 'home' }">Fireblogs</router-link>
+          <router-link class="header" :to="{ name: 'Home' }">Fireblogs</router-link>
         </div>
       </div>
       <div class="right">

@@ -9,7 +9,7 @@
           <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
           <router-link class="link" :to="{ name: 'Blog' }">Blogs</router-link>
           <router-link v-if="isAdmin"  class="link" :to="{ name: 'CreatePost' }">Create Post</router-link>
-          <router-link v-if="isAdmin" class="link" :to="{ name: 'Login' }">Login/Register</router-link>
+          <router-link v-if="!isAdmin" class="link" :to="{ name: 'Login' }">Login/Register</router-link>
         </ul>
         <div v-if="isAdmin" @click="toggleProfileMenu" class="profile" ref="profile">
           <span>{{ this.$store.state.profileInitials }}</span>
@@ -186,6 +186,7 @@ header {
         }
 
         .profile-menu {
+          z-index: 999999;
           position: absolute;
           top: 60px;
           right: 0;
