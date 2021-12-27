@@ -1,5 +1,5 @@
 # fireblogs
-  <img width="500" align='left' src="https://github.com/timurioukr/vue_firebase_blog/blob/main/1.jpg">
+  <img width="2000" align='center' src="https://github.com/timurioukr/vue_firebase_blog/blob/main/1.jpg">
 
 
 ## Project setup
